@@ -29,22 +29,38 @@ const songs = [
   { id: 9, name: "Toosie Slide", artistId: 3 },
 ];
 
+//Song type for root query
+const SongType = new GraphQLObjectType({
+  name: "Song",
+  description: "This represents a song written by an artist",
+  fields: () => ({
+    id: { type: GraphQLNonNull(GraphQLInt) },
+    name: { type: GraphQLNonNull(GraphQLString) },
+    artistId: { type: GraphQLNonNull(GraphQLInt) },
+  }),
+});
+
 //Root query scope, everything is pulled down from here, so you can query all objects from here
 const RootQueryType = new GraphQLObjectType({
   name: "Query",
   description: "Root Query",
   fields: () => ({
     songs: {
-      type: SongType,
+      type: new GraphQLList(SongType),
       description: "List of All Songs",
       resolve: () => songs,
     },
   }),
 });
 
+const schema = new GraphQLSchema({
+  query: RootQueryType,
+});
+
 app.use(
   "/graphql",
   expressGraphQL({
+    schema: schema,
     graphiql: true,
   })
 );
