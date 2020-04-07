@@ -65,6 +65,11 @@ const RootQueryType = new GraphQLObjectType({
       description: "List of All Songs",
       resolve: () => songs,
     },
+    artists: {
+      type: new GraphQLList(ArtistType),
+      description: "List of All Artist",
+      resolve: () => artists,
+    },
   }),
 });
 
