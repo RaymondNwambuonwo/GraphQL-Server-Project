@@ -21,6 +21,18 @@ const songs = [
   { id: 9, name: "Toosie Slide", artistId: 3 },
 ];
 
+const RootQueryType = new GraphQLObjectType({
+  name: "Query",
+  description: "Root Query",
+  fields: () => ({
+    songs: {
+      type: SongType,
+      description: "List of All Songs",
+      resolve: () => songs,
+    },
+  }),
+});
+
 app.use(
   "/graphql",
   expressGraphQL({
