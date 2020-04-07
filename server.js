@@ -1,5 +1,13 @@
 const express = require("express");
 const expressGraphQL = require("express-graphql");
+const {
+  GraphQLSchema,
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLList,
+  GraphQLInt,
+  GraphQLNonNull,
+} = require("graphql");
 const app = express();
 
 //setting up my own database, not using api yet.
@@ -21,6 +29,7 @@ const songs = [
   { id: 9, name: "Toosie Slide", artistId: 3 },
 ];
 
+//Root query scope, everything is pulled down from here, so you can query all objects from here
 const RootQueryType = new GraphQLObjectType({
   name: "Query",
   description: "Root Query",
