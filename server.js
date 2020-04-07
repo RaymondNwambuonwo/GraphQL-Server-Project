@@ -52,6 +52,12 @@ const ArtistType = new GraphQLObjectType({
   fields: () => ({
     id: { type: GraphQLNonNull(GraphQLInt) },
     name: { type: GraphQLNonNull(GraphQLString) },
+    songs: {
+      type: GraphQLList(SongType),
+      resolve: (artist) => {
+        return songs.filter((song) => song.artistId === artist.id);
+      },
+    },
   }),
 });
 
