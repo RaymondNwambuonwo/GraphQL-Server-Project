@@ -37,6 +37,21 @@ const SongType = new GraphQLObjectType({
     id: { type: GraphQLNonNull(GraphQLInt) },
     name: { type: GraphQLNonNull(GraphQLString) },
     artistId: { type: GraphQLNonNull(GraphQLInt) },
+    artist: {
+      type: ArtistType,
+      resolve: (song) => {
+        return artists.find((artist) => artist.id === song.artistId);
+      },
+    },
+  }),
+});
+
+const ArtistType = new GraphQLObjectType({
+  name: "Artist",
+  description: "This represents an artist of a song",
+  fields: () => ({
+    id: { type: GraphQLNonNull(GraphQLInt) },
+    name: { type: GraphQLNonNull(GraphQLString) },
   }),
 });
 
