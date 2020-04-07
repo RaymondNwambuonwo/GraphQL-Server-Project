@@ -83,10 +83,10 @@ const RootQueryType = new GraphQLObjectType({
       type: ArtistType,
       description: "One Artist",
       args: {
-        name: { type: GraphQLString },
+        id: { type: GraphQLInt },
       },
       resolve: (parent, args) =>
-        artists.find((artist) => artist.name === args.id),
+        artists.find((artist) => artist.id === args.id),
     },
     artists: {
       type: new GraphQLList(ArtistType),
