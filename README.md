@@ -15,4 +15,3 @@ This was my first time working with GraphQL having taken a day or two to read up
 # Use
 
 Fork and clone repository.
-Enjoy.
