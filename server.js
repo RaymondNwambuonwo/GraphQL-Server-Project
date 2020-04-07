@@ -96,8 +96,45 @@ const RootQueryType = new GraphQLObjectType({
   }),
 });
 
+const RootMutationType = new GraphQLObjectType({
+  name: "Mutation",
+  description: "Root Mutation",
+  fields: () => ({
+    addSong: {
+      type: SongType,
+      description: "Add a song",
+      args: {
+        name: { type: GraphQLNonNull(GraphQLString) },
+        artistId: { type: GraphQLNonNull(GraphQLInt) },
+      },
+      resolve: (parent, args) => {
+        const song = {
+          id: songs.length + 1,
+          name: args.name,
+          artistId: args.artistId,
+        };
+        songs.push(song);
+        return song;
+      },
+    },
+    addArtist: {
+      type: ArtistType,
+      description: "Add an artist",
+      args: {
+        name: { type: GraphQLNonNull(GraphQLString) },
+      },
+      resolve: (parent, args) => {
+        const artist = { id: artists.length + 1, name: args.name };
+        artists.push(artist);
+        return artist;
+      },
+    },
+  }),
+});
+
 const schema = new GraphQLSchema({
   query: RootQueryType,
+  mutation: RootMutationType,
 });
 
 app.use(
