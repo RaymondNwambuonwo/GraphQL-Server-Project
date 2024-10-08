@@ -2,7 +2,7 @@
 
 # About
 
-This was my first time working with GraphQL having taken a day or two to read up on and learn the basics as well as the advantages of GraphQL. Here I created a simple NodeJS and Express GraphQL API for songs and artist. It possesses some CRUD functionality being able to create an artist or song and list all artists and songs. This was a true educational experience as I have been working REST traditionally, but I can see where GraphQL can have its advantages in regards to APIs.
+Practice with GraphQL. Here I created a simple NodeJS and Express GraphQL API for songs and artist. It possesses some CRUD functionality being able to create an artist or song and list all artists and songs. This was a true educational experience as I have been working REST traditionally, but I can see where GraphQL can have its advantages in regards to APIs.
 
 ## Technologies Used
 
